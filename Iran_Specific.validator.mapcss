@@ -1,6 +1,6 @@
 meta {
     title: "Iran-specific rules";
-    version: "1.0";
+    version: "1.1";
     description: "Rules, which are limited to Iran only.";
     author: "Ebrahim Nejati";
     link: "https://github.com/DearRude/IranianJOSMValidation";
@@ -123,33 +123,40 @@ way[highway = unclassified][name !~ /(جاده).*/][inside("IR")] {
 /* =-=-=-=-=-=-=-=-  =-=-=-=-=-=-=-=- =-=-=-=-=-=-=-=- */
 
 /* واصف residential */
-way[highway = residential][name !~ /(جاده|خیابان|فرعی|کوی|کوچه).*/][inside("IR")] {
+way[highway = residential][name !~ /(جاده|خیابان|بن‌بست|فرعی|کوی|کوچه).*/][inside("IR")] {
   throwWarning: tr("اضافه کردن «خیابان» به اول نام معبر");
   fixAdd: concat("name=خیابان ", tag("name"));
   group: tr("معبر با تگ «highway=residential» فاقد کلمه واصف");
 }
 
-way[highway = residential][name !~ /(جاده|خیابان|فرعی|کوی|کوچه).*/][inside("IR")] {
+way[highway = residential][name !~ /(جاده|خیابان|بن‌بست|فرعی|کوی|کوچه).*/][inside("IR")] {
   throwWarning: tr("اضافه کردن «کوچه» به اول نام معبر");
   fixAdd: concat("name=کوچه ", tag("name"));
   group: tr("معبر با تگ «highway=residential» فاقد کلمه واصف");
 }
 
-way[highway = residential][name !~ /(جاده|خیابان|فرعی|کوی|کوچه).*/][inside("IR")] {
+way[highway = residential][name !~ /(جاده|خیابان|بن‌بست|فرعی|کوی|کوچه).*/][inside("IR")] {
   throwWarning: tr("اضافه کردن «جاده» به اول نام معبر");
   fixAdd: concat("name=جاده ", tag("name"));
   group: tr("معبر با تگ «highway=residential» فاقد کلمه واصف");
 }
 
-way[highway = residential][name !~ /(جاده|خیابان|فرعی|کوی|کوچه).*/][inside("IR")] {
+way[highway = residential][name !~ /(جاده|خیابان|بن‌بست|فرعی|کوی|کوچه).*/][inside("IR")] {
   throwWarning: tr("اضافه کردن «فرعی» به اول نام معبر");
   fixAdd: concat("name=فرعی ", tag("name"));
   group: tr("معبر با تگ «highway=residential» فاقد کلمه واصف");
 }
 
-way[highway = residential][name !~ /(جاده|خیابان|فرعی|کوی|کوچه).*/][inside("IR")] {
-  throwWarning: tr("اضافه کردن «کوچه» به اول نام معبر");
+way[highway = residential][name !~ /(جاده|خیابان|بن‌بست|فرعی|کوی|کوچه).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «کوی» به اول نام معبر");
   fixAdd: concat("name=کوی ", tag("name"));
   group: tr("معبر با تگ «highway=residential» فاقد کلمه واصف");
 }
+
+way[highway = residential][name !~ /(جاده|خیابان|بن‌بست|فرعی|کوی|کوچه).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «بن‌بست» به اول نام معبر");
+  fixAdd: concat("name=بن‌بست ", tag("name"));
+  group: tr("معبر با تگ «highway=residential» فاقد کلمه واصف");
+}
+
 /* =-=-=-=-=-=-=-=-  =-=-=-=-=-=-=-=- =-=-=-=-=-=-=-=- */
