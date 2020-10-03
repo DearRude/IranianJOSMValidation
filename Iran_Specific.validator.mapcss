@@ -1,6 +1,6 @@
 meta {
     title: "Iran-specific rules";
-    version: "1.1";
+    version: "1.2";
     description: "Rules, which are limited to Iran only.";
     author: "Ebrahim Nejati";
     link: "https://github.com/DearRude/IranianJOSMValidation";
@@ -159,4 +159,26 @@ way[highway = residential][name !~ /(جاده|خیابان|بن‌بست|فرع�
   group: tr("معبر با تگ «highway=residential» فاقد کلمه واصف");
 }
 
+/* =-=-=-=-=-=-=-=-  =-=-=-=-=-=-=-=- =-=-=-=-=-=-=-=- */
+/* ادمین لول ۷ */
+
+
+relation[boundary = administrative][admin_level = 7][name !~ /(شهر|دهستان).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «دهستان» به اول نام دهستان");
+  fixAdd: concat("name=دهستان ", tag("name"));
+  group: tr("ریلیشن با ادمین‌لول ۷ فاقد کلمه واصف");
+}
+
+relation[boundary = administrative][admin_level = 7][name !~ /(شهر|دهستان).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «شهر» به اول نام شهر");
+  fixAdd: concat("name=شهر ", tag("name"));
+  group: tr("ریلیشن با ادمین‌لول ۷ فاقد کلمه واصف");
+}
+
+node[place =~ /(town|city)/][name =~ /(شهر|دهستان).*/][inside("IR")] {
+  throwWarning: tr("حذف کلمه واصف از نقطه سیاسی ادمین‌لول ۷");
+  fixAdd: concat("name=", replace(tag("name"), "شهر", ""));
+  fixAdd: concat("name=", replace(tag("name"), "دهستان", ""));
+  group: tr("حذف کلمه واصف از نقطه سیاسی");
+}
 /* =-=-=-=-=-=-=-=-  =-=-=-=-=-=-=-=- =-=-=-=-=-=-=-=- */
