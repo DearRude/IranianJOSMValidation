@@ -1,0 +1,184 @@
+meta {
+    title: "Iran-specific rules";
+    version: "1.3";
+    description: "Rules, which are limited to Iran only.";
+    author: "Ebrahim Nejati";
+    link: "https://github.com/DearRude/IranianJOSMValidation";
+    icon: "icon/OSM_Iran.png";
+    min-josm-version: "11424"; /* due to territory selectors */
+    baselanguage: "fa";
+}
+meta[lang=fa] {
+    title: "قوانین در ایران";
+    description: "قوانین جاسم که فقط در ایران می‌تواند اعمال کرد";
+}
+
+
+/* Fixing typo in بلوار */
+way[highway][name ^= "بلوار"][inside("IR")] {
+  throwWarning: "کلمه «بلوار» باید تبدیل به «بولوار» شود.";
+  fixAdd: concat("name=", replace(tag("name"), "بلوار", "بولوار"));
+}
+
+way[junction=roundabout][name ^= "میدان"][inside("IR")] {
+  throwWarning: "به احتمال زیاد، بجای کلمه «فلکه» از «میدان» استفاده کر‌ده‌اید. برای دیدن تفاوت فلکه و میدان، ویکی را بخوانید.";
+  fixAdd: concat("name=", replace(tag("name"), "میدان", "فلکه"));
+}
+/* =-=-=-=-=-=-=-=-  =-=-=-=-=-=-=-=- =-=-=-=-=-=-=-=- */
+
+/* واصف motorway */
+way[highway = motorway][name !~ /(ازادراه|آزادراه|اتوبان).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «آزادراه» به اول نام معبر");
+  fixAdd: concat("name=آزادراه ", tag("name"));
+  group: tr("معبر با تگ «highway=motorway» فاقد کلمه واصف");
+}
+
+way[highway = motorway][name !~ /(ازادراه|آزادراه|اتوبان).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «اتوبان» به اول نام معبر");
+  fixAdd: concat("name=اتوبان ", tag("name"));
+  group: tr("معبر با تگ «highway=motorway» فاقد کلمه واصف");
+}
+/* =-=-=-=-=-=-=-=-  =-=-=-=-=-=-=-=- =-=-=-=-=-=-=-=- */
+
+/* واصف trunk */
+way[highway = trunk][name !~ /(بزرگراه).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «بزرگراه» به اول نام معبر");
+  fixAdd: concat("name=بزرگراه ", tag("name"));
+  group: tr("معبر با تگ «highway=trunk» فاقد کلمه واصف");
+}
+/* =-=-=-=-=-=-=-=-  =-=-=-=-=-=-=-=- =-=-=-=-=-=-=-=- */
+
+/* واصف primary */
+way[highway = primary][name !~ /(بزرگراه|بولوار|بلوار|چهارباغ|چهار باغ|خیابان).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «بولوار» به اول نام معبر");
+  fixAdd: concat("name=بولوار ", tag("name"));
+  group: tr("معبر با تگ «highway=primary» فاقد کلمه واصف");
+}
+
+way[highway = primary][name !~ /(بزرگراه|بولوار|بلوار|چهارباغ|چهار باغ|خیابان).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «بزرگراه» به اول نام معبر");
+  fixAdd: concat("name=بزرگراه ", tag("name"));
+  group: tr("معبر با تگ «highway=primary» فاقد کلمه واصف");
+}
+
+way[highway = primary][name !~ /(بزرگراه|بولوار|بلوار|چهارباغ|چهار باغ|خیابان).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «چهارباغ» به اول نام معبر");
+  fixAdd: concat("name=چهارباغ ", tag("name"));
+  group: tr("معبر با تگ «highway=primary» فاقد کلمه واصف");
+}
+
+way[highway = primary][name !~ /(بزرگراه|بولوار|بلوار|چهارباغ|چهار باغ|خیابان).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «خیابان» به اول نام معبر");
+  fixAdd: concat("name=خیابان ", tag("name"));
+  group: tr("معبر با تگ «highway=primary» فاقد کلمه واصف");
+}
+/* =-=-=-=-=-=-=-=-  =-=-=-=-=-=-=-=- =-=-=-=-=-=-=-=- */
+
+/* واصف secondary */
+way[highway = secondary][name !~ /(جاده|بولوار|بلوار|چهارباغ|چهار باغ|خیابان).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «بولوار» به اول نام معبر");
+  fixAdd: concat("name=بولوار ", tag("name"));
+  group: tr("معبر با تگ «highway=secondary» فاقد کلمه واصف");
+}
+
+way[highway = secondary][name !~ /(جاده|بولوار|بلوار|چهارباغ|چهار باغ|خیابان).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «خیابان» به اول نام معبر");
+  fixAdd: concat("name=خیابان ", tag("name"));
+  group: tr("معبر با تگ «highway=secondary» فاقد کلمه واصف");
+}
+
+way[highway = secondary][name !~ /(جاده|بولوار|بلوار|چهارباغ|چهار باغ|خیابان).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «جاده» به اول نام معبر");
+  fixAdd: concat("name=جاده ", tag("name"));
+  group: tr("معبر با تگ «highway=secondary» فاقد کلمه واصف");
+}
+
+way[highway = secondary][name !~ /(جاده|بولوار|بلوار|چهارباغ|چهار باغ|خیابان).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «چهارباغ» به اول نام معبر");
+  fixAdd: concat("name=چهارباغ ", tag("name"));
+  group: tr("معبر با تگ «highway=secondary» فاقد کلمه واصف");
+}
+/* =-=-=-=-=-=-=-=-  =-=-=-=-=-=-=-=- =-=-=-=-=-=-=-=- */
+
+/* واصف tertiary */
+way[highway = tertiary][name !~ /(جاده|خیابان).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «خیابان» به اول نام معبر");
+  fixAdd: concat("name=خیابان ", tag("name"));
+  group: tr("معبر با تگ «highway=tertiary» فاقد کلمه واصف");
+}
+
+way[highway = tertiary][name !~ /(جاده|خیابان).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «جاده» به اول نام معبر");
+  fixAdd: concat("name=جاده ", tag("name"));
+  group: tr("معبر با تگ «highway=tertiary» فاقد کلمه واصف");
+}
+/* =-=-=-=-=-=-=-=-  =-=-=-=-=-=-=-=- =-=-=-=-=-=-=-=- */
+
+/* واصف unclassified */
+way[highway = unclassified][name !~ /(جاده).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «جاده» به اول نام معبر");
+  fixAdd: concat("name=جاده ", tag("name"));
+  group: tr("معبر با تگ «highway=unclassified» فاقد کلمه واصف");
+}
+/* =-=-=-=-=-=-=-=-  =-=-=-=-=-=-=-=- =-=-=-=-=-=-=-=- */
+
+/* واصف residential */
+way[highway = residential][name !~ /(جاده|خیابان|بن‌بست|فرعی|کوی|کوچه).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «خیابان» به اول نام معبر");
+  fixAdd: concat("name=خیابان ", tag("name"));
+  group: tr("معبر با تگ «highway=residential» فاقد کلمه واصف");
+}
+
+way[highway = residential][name !~ /(جاده|خیابان|بن‌بست|فرعی|کوی|کوچه).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «کوچه» به اول نام معبر");
+  fixAdd: concat("name=کوچه ", tag("name"));
+  group: tr("معبر با تگ «highway=residential» فاقد کلمه واصف");
+}
+
+way[highway = residential][name !~ /(جاده|خیابان|بن‌بست|فرعی|کوی|کوچه).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «جاده» به اول نام معبر");
+  fixAdd: concat("name=جاده ", tag("name"));
+  group: tr("معبر با تگ «highway=residential» فاقد کلمه واصف");
+}
+
+way[highway = residential][name !~ /(جاده|خیابان|بن‌بست|فرعی|کوی|کوچه).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «فرعی» به اول نام معبر");
+  fixAdd: concat("name=فرعی ", tag("name"));
+  group: tr("معبر با تگ «highway=residential» فاقد کلمه واصف");
+}
+
+way[highway = residential][name !~ /(جاده|خیابان|بن‌بست|فرعی|کوی|کوچه).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «کوی» به اول نام معبر");
+  fixAdd: concat("name=کوی ", tag("name"));
+  group: tr("معبر با تگ «highway=residential» فاقد کلمه واصف");
+}
+
+way[highway = residential][name !~ /(جاده|خیابان|بن‌بست|فرعی|کوی|کوچه).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «بن‌بست» به اول نام معبر");
+  fixAdd: concat("name=بن‌بست ", tag("name"));
+  group: tr("معبر با تگ «highway=residential» فاقد کلمه واصف");
+}
+
+/* =-=-=-=-=-=-=-=-  =-=-=-=-=-=-=-=- =-=-=-=-=-=-=-=- */
+/* ادمین لول ۷ */
+
+
+relation[boundary = administrative][admin_level = 7][name !~ /(شهر|دهستان).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «دهستان» به اول نام دهستان");
+  fixAdd: concat("name=دهستان ", tag("name"));
+  group: tr("ریلیشن با ادمین‌لول ۷ فاقد کلمه واصف");
+}
+
+relation[boundary = administrative][admin_level = 7][name !~ /(شهر|دهستان).*/][inside("IR")] {
+  throwWarning: tr("اضافه کردن «شهر» به اول نام شهر");
+  fixAdd: concat("name=شهر ", tag("name"));
+  group: tr("ریلیشن با ادمین‌لول ۷ فاقد کلمه واصف");
+}
+
+node[place =~ /(town|city)/][name =~ /(شهر|دهستان).*/][inside("IR")] {
+  throwWarning: tr("حذف کلمه واصف از نقطه سیاسی ادمین‌لول ۷");
+  fixAdd: concat("name=", replace(tag("name"), "شهر", ""));
+  fixAdd: concat("name=", replace(tag("name"), "دهستان", ""));
+  group: tr("حذف کلمه واصف از نقطه سیاسی");
+}
+/* =-=-=-=-=-=-=-=-  =-=-=-=-=-=-=-=- =-=-=-=-=-=-=-=- */
