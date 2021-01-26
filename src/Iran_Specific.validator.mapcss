@@ -1,10 +1,10 @@
 meta {
     title: "Iran-specific rules";
-    version: "1.2";
+    version: "1.3";
     description: "Rules, which are limited to Iran only.";
     author: "Ebrahim Nejati";
     link: "https://github.com/DearRude/IranianJOSMValidation";
-    icon: "OSM_Iran.png";
+    icon: "icon/OSM_Iran.png";
     min-josm-version: "11424"; /* due to territory selectors */
     baselanguage: "fa";
 }
