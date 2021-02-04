@@ -1,0 +1,13 @@
+/* --- *
+/* Fixing typo in بلوار */
+way[highway][name ^="بلوار"][inside("IR")] {
+    throwWarning: "کلمه «بلوار» باید تبدیل به «بولوار» شود.";
+    fixAdd: concat("name=", replace(tag("name"), "بلوار", "بولوار"));
+}
+
+/* Fixing typo in میدان */
+way[junction=roundabout][name ^="میدان"][inside("IR")] {
+    throwWarning: "به احتمال زیاد، بجای کلمه «فلکه» از «میدان» استفاده کر‌ده‌اید. برای دیدن تفاوت فلکه و میدان، ویکی را بخوانید.";
+    fixAdd: concat("name=", replace(tag("name"), "میدان", "فلکه"));
+}
+

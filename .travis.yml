@@ -2,8 +2,11 @@ dist: trusty
 language: bash
 script:
   - rm .gitignore
+  - find src/ -name '*.css' -exec cat {} \; > src/validations/all
+  - cat src/validations/meta.mapcss src/validations/all > src/Iran_Specific.validator.mapcss
+  - rm src/validations/all
   - cd src
-  - zip -r ../Iranian-Specific-Rules.zip *
+  - zip -r ../Iran-Specific-Rules.zip Iran_Specific.validator.mapcss icon
 
 deploy:
   provider: pages
