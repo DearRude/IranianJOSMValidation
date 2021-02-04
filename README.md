@@ -18,7 +18,5 @@ In order to to contribute in this project:
 ## Support this project 💰
 Consider :star: this repo.
 
-You also can either donate :credit_card: to [me](https://zarinp.al/@simplyebi) or [Iran OSM](https://donate.osmiran.ir/) in general.
-
 ## License :page_facing_up:
 This project is licensed under GNU GENERAL PUBLIC 3+ LICENSE

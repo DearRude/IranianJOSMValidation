@@ -1,0 +1,47 @@
+/* --- */
+/* 7 - Shahr-Dehestan */
+relation[boundary=administrative][admin_level=7][name !~/(شهر|دهستان).*/][inside("IR")] {
+    throwWarning: tr("اضافه کردن «دهستان» به اول نام دهستان");
+    fixAdd: concat("name=دهستان ", tag("name"));
+    group: tr("ریلیشن با ادمین‌لول ۷ فاقد کلمه واصف");
+}
+
+relation[boundary=administrative][admin_level=7][name !~/(شهر|دهستان).*/][inside("IR")] {
+    throwWarning: tr("اضافه کردن «شهر» به اول نام شهر");
+    fixAdd: concat("name=شهر ", tag("name"));
+    group: tr("ریلیشن با ادمین‌لول ۷ فاقد کلمه واصف");
+}
+
+node[place=~/(town|city)/][name=~/(شهر|دهستان).*/][inside("IR")] {
+    throwWarning: tr("حذف کلمه واصف از نقطه سیاسی ادمین‌لول ۷");
+    fixAdd: concat("name=", replace(tag("name"), "شهر", ""));
+    fixAdd: concat("name=", replace(tag("name"), "دهستان", ""));
+    group: tr("حذف کلمه واصف از نقطه سیاسی");
+}
+
+/* --- */
+/* 6 - Bakhsh */
+relation[boundary=administrative][admin_level=6][name !~/بخش.*/][inside("IR")] {
+    throwWarning: tr("اضافه کردن «بخش» به اول نام بخش");
+    fixAdd: concat("name=بخش ", tag("name"));
+    group: tr("ریلیشن با ادمین‌لول ۶ فاقد کلمه واصف");
+}
+
+/* --- */
+/* 5 - Shahrestan */
+node[place=county][name !~/شهرستان.*/][inside("IR")],
+relation[boundary=administrative][admin_level=5][name !~/شهرستان.*/][inside("IR")] {
+    throwWarning: tr("اضافه کردن «شهرستان» به اول نام شهرستان");
+    fixAdd: concat("name=شهرستان ", tag("name"));
+    group: tr("ریلیشن با ادمین‌لول ۵ فاقد کلمه واصف");
+}
+
+/* --- */
+/* 4 - Ostan */
+node[place=province][name !~/استان.*/][inside("IR")],
+relation[boundary=administrative][admin_level=4][name !~/استان.*/][inside("IR")] {
+    throwWarning: tr("اضافه کردن «استان» به اول نام استان");
+    fixAdd: concat("name=استان ", tag("name"));
+    group: tr("ریلیشن با ادمین‌لول ۴ فاقد کلمه واصف");
+}
+
